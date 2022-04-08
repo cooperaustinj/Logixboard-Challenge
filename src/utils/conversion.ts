@@ -3,7 +3,7 @@ import { WeightUnit } from '../types';
 const POUND_PER_KILO: number = 0.453592;
 const OUNCE_PER_KILO: number = 0.028349;
 
-export function weightToGrams(weight: string, unit: WeightUnit) {
+export function weightToKilos(weight: string, unit: WeightUnit) {
     const nWeight = parseInt(weight);
     switch (unit) {
         case WeightUnit.KILOGRAMS:

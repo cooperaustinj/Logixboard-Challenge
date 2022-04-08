@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { convertKilos, weightToGrams } from '../utils/conversion';
+import { convertKilos, weightToKilos } from '../utils/conversion';
 import { Shipment, TransportPack, WeightUnit } from '../types';
 import { db } from './db';
 
@@ -79,7 +79,7 @@ export async function save(shipment: Shipment) {
                 reference_id: shipment.referenceId,
                 weight: tw.weight,
                 unit: tw.unit,
-                weight_kilograms: weightToGrams(tw.weight, tw.unit as WeightUnit),
+                weight_kilograms: weightToKilos(tw.weight, tw.unit as WeightUnit),
             }));
         await trx('transport_pack').insert(transportPackWriteModels);
     }
