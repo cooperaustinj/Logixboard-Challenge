@@ -37,6 +37,7 @@ export async function get(referenceId: string) {
             referenceId,
         )
     ).rows[0];
+    if(!record) return null;
     const result: Shipment = {
         referenceId: record.reference_id,
         estimatedTimeArrival: record.estimated_time_arrival.toISOString().replace('Z', ''), // remove trailing Z to match original message format

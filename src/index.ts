@@ -32,11 +32,13 @@ app.post('/organization', async (req: any, res: any) => {
 
 app.get('/shipments/:shipmentId', async (req: any, res: any) => {
     const result = await ShipmentRepo.get(req.params.shipmentId);
+    if(!result) return res.status(404).send();
     return res.send(result);
 });
 
 app.get('/organizations/:organizationId', async (req: any, res: any) => {
     const result = await OrganizationRepo.get(req.params.organizationId);
+    if(!result) return res.status(404).send();
     return res.send(result);
 });
 
